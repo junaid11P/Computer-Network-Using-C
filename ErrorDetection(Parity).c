@@ -42,3 +42,22 @@ void calculate1DParity(int bitstream[], int size){
     }
     printf("%d\n", parity);
 }
+
+void calculate2Dparity(int bitstream[5][7], int rows, int cols){
+    int rowParity[5] ={0}, colParity[7] = {0};
+
+    for(int i=0; i<rows; i++){
+        for(int j=0; j<cols; j++){
+            rowParity[i]^=bitstream[i][j];
+            colParity[j]^=bitstream[i][j];
+        }
+    }
+
+    printf("\n2D Parity:\nInput bit stream: \n");
+    for(int i=0; i<rows; i++){
+        for(int j=0; j<cols; j++){
+            printf("%d", bitstream[i][j]);
+        }
+        printf(" %d\n", rowParity[i]);
+    }
+}
